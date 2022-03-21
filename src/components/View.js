@@ -13,7 +13,6 @@ function View(props) {
             .then((res) => {
                 setLoading(false)
                 setSingle(res.data)
-                // console.log(res.data)
             })
     }, [props])
 
@@ -26,7 +25,7 @@ function View(props) {
             <h1>{single.name}</h1>
             <p>{single.height}</p>
             <h3>Stats</h3>
-            <img src={imgSrc + single.id + '.svg'} className="poke-img" />
+            <img src={imgSrc + single.id + '.svg'} className="poke-img" alt={`${single.name}`} />
         </div>
     );
 }

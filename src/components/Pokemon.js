@@ -1,20 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
-import InfiniteScroll from 'react-infinite-scroller';
+import SearchContext from './SearchContext'
 
-function Pokemon({ events }) {
+// // NEED PROPS FROM NAVBAR.JS -- filteredData
 
-    const [pokemon, setPokemon] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [loadMore, setLoadMore] = useState(false)
-    const [prevY, setPrevY] = useState(0)
+function Pokemon() {
+
+    const { pokemon, setPokemon, filteredData,
+        loading, setLoading, loadMore, prevY, setPrevY } = useContext(SearchContext)
+
     const [offset, setOffset] = useState(0)
-
-    const [filteredData, setFilteredData] = useState([])
-    const [wordEntered, setWordEntered] = useState("")
-
     let pokemonRef = useRef([])
     let loadingRef = useRef(null)
     let offsetRef = useRef({})
@@ -53,29 +50,6 @@ function Pokemon({ events }) {
         setPrevY(y)
     }
 
-    const handleFilter = (event) => {
-        let val = event.target.value
-        setWordEntered(val)
-
-        const newFilter = pokemon.filter((value) => {
-            return value.name.toLowerCase().includes(val.toLowerCase())
-        })
-
-        if (val === "") {
-            setFilteredData([]);
-        } else {
-            setFilteredData(newFilter);
-        }
-    }
-
-    // console.log(filteredData)
-
-    const clearInput = () => {
-        setFilteredData([]);
-        setWordEntered("");
-    };
-
-
     const getPokemon = async () => {
         setLoading(true)
         let res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=${offsetRef.current}`)
@@ -86,62 +60,49 @@ function Pokemon({ events }) {
         }
     }
 
-    // const displayData = () => {
-
-    //     if (filteredData.length == 0) {
-    //         return pokemon.map((poke, i) => {
-    //             return (
-    //                 <div className='poke' key={i}>
-    //                     <Link to={"/poke/" + poke.name}>
-    //                         <h3>{poke.name}</h3>
-    //                     </Link>
-    //                 </div>
-    //             )
-    //         })
-    //     }
-    //     else {
-    //         filteredData.slice(0, 15).map((v, i) => {
-    //             console.log(v.name)
-    //         })
-    //     }
-    // }
-
     return (
         <div className='Pokemon'>
-            <input
-                type="text"
-                id="search-box"
-                placeholder="catch 'em all"
-                onChange={handleFilter} />
             <div className='pokemon-list'>
-                {/* {displayData()} */}
+                {filteredData.length == 0 && (
+                    pokemon.map((poke, i) => {
+                        return (
+                            <div className='poke' key={i}>
+                                <Link to={"/poke/" + poke.name}>
+                                    <h3>{poke.name}</h3>
+                                </Link>
+                            </div>
+                        )
+                    })
+                )}
 
-                {pokemon.map((poke, i) => {
-                    return (
-                        <div className='poke' key={i}>
-                            <Link to={"/poke/" + poke.name}>
-                                <h3>{poke.name}</h3>
-                                <p>{i + 1}</p>
-                            </Link>
-                        </div>
-                    )
-                })}
+                {filteredData.length != 0 && (
+                    filteredData.slice(0, 15).map((poke, i) => {
+                        return (
+                            <div className='poke' key={i}>
+                                <Link to={"/poke/" + poke.name}>
+                                    <h3>hello</h3>
+                                    <p>{poke.name}</p>
+                                </Link>
+                            </div>
+                        )
+                    }))
+                }
 
                 <div
-                    className="yoHello"
+                    className="loadMorePoke"
                     ref={loadingRef}
                     style={{ height: '50px' }}
                 >
                     <span style={{ display: loadMore ? 'block' : 'none', textAlign: "center" }}>Loading More..</span>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
 export default Pokemon;
 
-// pokemon.map((poke, i) => {
+// (pokemon.map((poke, i) => {
 //     return (
 //         <div className='poke' key={i}>
 //             <Link to={"/poke/" + poke.name}>
@@ -149,4 +110,4 @@ export default Pokemon;
 //             </Link>
 //         </div>
 //     )
-// })
+// }))
