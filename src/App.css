@@ -1,38 +1,133 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f03a47;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 100%;
+}
+
+a {
+  /* color: #25CED1; */
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+button {
+  background: #eed430;
+  padding: 15px;
+  font-family: inherit;
   text-align: center;
+  margin: 20px;
+  border: none;
+  border-radius: 3px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* navbar */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  background-color: #eed430; 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  height: 8vh;
+}
+
+.pokemon-title {
+  margin-right: 20px;
+  color: #000 !important;
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+form {
+  margin-right: 30px;
+}
+
+#search-box {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #000;
+  margin-left: 20px;
+  margin-right: 15px;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.5em;
+}
+
+#search-box::placeholder {
+  color: #fff;
+}
+
+#search-btn{
+  background: none;
+  font-family: inherit;
+  font-size: 1.5em;
+  border: none;
+}
+/* main page */
+
+.main {
+  display: flex;
+}
+
+/* POKEMON LIST */
+.Pokemon {
+  width: 25%;
+  /* border: 2.5px solid #000; */
+}
+
+.loading {
   color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  margin-top: 100px;
+  width: 25%;
 }
 
-.App-link {
-  color: #61dafb;
+.poke {
+  background-color: white;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pokemon-list {
+  margin: 10px;
+  margin-right: 5px;
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.page-btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.View {
+  width: 75%;
+  margin: 10px;
+  padding: 10px;
+  /* border: 2.5px solid #000; */
+}
+
+.View h1 {
+  text-align: center;
+  background-color: #000;
+  color: white;
+  text-transform:capitalize;
+}
+
+.poke-img{
+  width: 30%;
 }
