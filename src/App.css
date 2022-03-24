@@ -114,20 +114,55 @@ form {
   justify-content: center;
 }
 
+/* VIEW */
+
 .View {
   width: 75%;
-  margin: 10px;
-  padding: 10px;
+  height: 100%;
   /* border: 2.5px solid #000; */
 }
 
 .View h1 {
   text-align: center;
-  background-color: #000;
-  color: white;
+  /* margin-left: 10px; */
+  font-size: 4em;
+  /* color: white; */
   text-transform:capitalize;
 }
 
 .poke-img{
-  width: 30%;
+  min-width: 500px;
+  max-height: 600px;
+}
+
+.info {
+  font-size: 2em;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+  height: 82vh;
+  margin-right: 15px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.right div {
+  margin: 10px;
+  text-align: center;
+  gap: 50px;
 }

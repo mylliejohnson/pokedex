@@ -8,9 +8,11 @@ import SearchContext from './SearchContext'
 
 function Pokemon() {
 
+    // search context, states, and ref 
     const { pokemon, setPokemon, filteredData,
-        loading, setLoading, loadMore, prevY, setPrevY } = useContext(SearchContext)
+        loading, setLoading, loadMore } = useContext(SearchContext)
 
+    const [prevY, setPrevY] = useState(0)
     const [offset, setOffset] = useState(0)
     let pokemonRef = useRef([])
     let loadingRef = useRef(null)
@@ -20,7 +22,7 @@ function Pokemon() {
     offsetRef.current = offset
     prevYRef.current = prevY
 
-    // get pokemon
+    // calls api function, sets loading and finds window dimensions
     useEffect(() => {
         getPokemon()
         setOffset(offsetRef.current + 20)
@@ -37,19 +39,7 @@ function Pokemon() {
         observer.observe(loadingRef.current)
     }, [])
 
-    const handleObserver = (entities, observer) => {
-
-        const y = entities[0].boundingClientRect.y
-
-        if (prevYRef.current > y) {
-            getPokemon()
-            setOffset(offsetRef.current + 20)
-            setLoading(true)
-        }
-
-        setPrevY(y)
-    }
-
+    // api call gets all pokemon
     const getPokemon = async () => {
         setLoading(true)
         let res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=${offsetRef.current}`)
@@ -59,6 +49,20 @@ function Pokemon() {
             setPokemon([...pokemonRef.current, ...res.data.results])
         }
     }
+
+    // window dimansions for loading more poke in list
+    const handleObserver = (entities, observer) => {
+        const y = entities[0].boundingClientRect.y
+
+        if (prevYRef.current > y) {
+            getPokemon()
+            setOffset(offsetRef.current + 20)
+            setLoading(true)
+        }
+        setPrevY(y)
+    }
+
+    /* --------------- MAIN RETURN --------------- */
 
     return (
         <div className='Pokemon'>
@@ -76,24 +80,25 @@ function Pokemon() {
                 )}
 
                 {filteredData.length != 0 && (
-                    filteredData.slice(0, 15).map((poke, i) => {
-                        return (
-                            <div className='poke' key={i}>
-                                <Link to={"/poke/" + poke.name}>
-                                    <h3>hello</h3>
-                                    <p>{poke.name}</p>
-                                </Link>
-                            </div>
-                        )
-                    }))
+                    filteredData
+                        .slice(0, 15)
+                        .map((poke, i) => {
+                            return (
+                                <div className='poke' key={i}>
+                                    <Link to={"/poke/" + poke.name}>
+                                        <p>{poke.name}</p>
+                                    </Link>
+                                </div>
+                            )
+                        }))
                 }
 
-                <div
-                    className="loadMorePoke"
+                <div className="loadMorePoke"
                     ref={loadingRef}
-                    style={{ height: '50px' }}
-                >
-                    <span style={{ display: loadMore ? 'block' : 'none', textAlign: "center" }}>Loading More..</span>
+                    style={{ height: '50px' }}>
+                    <span style={{ display: loadMore ? 'block' : 'none', textAlign: "center" }}>
+                        Loading More...
+                    </span>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 const SearchContext = createContext({})
 
@@ -8,16 +9,14 @@ export const SearchProvider = ({ children }) => {
     const [filteredData, setFilteredData] = useState([])
     const [loading, setLoading] = useState(false)
     const [loadMore, setLoadMore] = useState(false)
-    const [prevY, setPrevY] = useState(0)
+  
     const [wordEntered, setWordEntered] = useState("")
-
-
 
     return (
         <SearchContext.Provider value={{
             pokemon, setPokemon, filteredData, setFilteredData,
             wordEntered, setWordEntered,
-            loading, setLoading, loadMore, setLoadMore, prevY, setPrevY,
+            loading, setLoading, loadMore, setLoadMore
         }}>
             {children}
         </SearchContext.Provider>
