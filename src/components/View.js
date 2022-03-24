@@ -9,7 +9,7 @@ function View(props) {
     const [loading, setLoading] = useState(false)
     const [spriteId, setSpriteId] = useState(1)
 
-    const [pType, setPType] = useState([])
+    const [pType, setPType] = useState({})
 
     let spriteSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${spriteId}.svg`
 
@@ -20,22 +20,24 @@ function View(props) {
                 setLoading(false)
                 setSinglePoke(res.data)
                 setSpriteId(res.data.id)
-                setPType(res.data.types)
-                pokemonTypes(res.data)
+                // setPType(res.data.types)
+                pokemonTypes(res.data.types)
                 // console.log(res.data.types[0].type.name)
             })
     }, [props])
 
-    if (loading) return "Loading..."
+    let load = () => { if (loading) return (<img src="https://i.imgur.com/aMz1Qtu.gif" height="100px" />) }
 
     function pokemonTypes(poke) {
         //  console.log(typeof res.data.types[0].type.name)
         //  poke.types.map((item) => console.log(item.type.name))
-        poke.types.map((x) => {
-            return (
-                <li>{x.type.name}</li>
-            )
-        })
+        // poke.types.map((x) => {
+        //     return (
+        //         <li>{x.type.name}</li>
+        //     )
+        // })
+
+        console.log(poke.map((x) => x.type.name))
     }
 
     return (
@@ -49,6 +51,8 @@ function View(props) {
                 <div className='left'>
                     <img src={spriteSrc} className="poke-img" alt={`${singlePoke.name}`} />
                 </div>
+
+                {load}
 
                 <div className='right'>
                     <div>
