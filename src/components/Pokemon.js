@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
-import SearchContext from './SearchContext'
+import DataContext from './DataContext'
 
 // // NEED PROPS FROM NAVBAR.JS -- filteredData
 
@@ -10,7 +10,7 @@ function Pokemon() {
 
     // search context, states, and ref 
     const { pokemon, setPokemon, filteredData,
-        loading, setLoading, loadMore } = useContext(SearchContext)
+        loading, setLoading, loadMore } = useContext(DataContext)
 
     const [prevY, setPrevY] = useState(0)
     const [offset, setOffset] = useState(0)

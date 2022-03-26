@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
-import SearchContext from './SearchContext';
+import DataContext from './DataContext';
 
 // NEED PROPS FROM POKEMON.JS -- pokemon
 // UNINSTALL @MUI
 
 function Navbar() {
 
-    const { pokemon, filteredData, setFilteredData, wordEntered, setWordEntered } = useContext(SearchContext)
+    const { pokemon, filteredData, setFilteredData, wordEntered, setWordEntered } = useContext(DataContext)
 
     const handleFilter = (event) => {
         let val = event.target.value

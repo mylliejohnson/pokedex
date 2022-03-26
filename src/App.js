@@ -3,13 +3,13 @@ import { Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import View from './components/View';
 import Pokemon from './components/Pokemon';
-import { SearchProvider } from './components/SearchContext';
+import { DataProvider } from './components/DataContext';
 
 function App(props) {
 
   return (
     <div className="App">
-      <SearchProvider>
+      <DataProvider>
         <Navbar />
 
         <div className='main'>
@@ -18,7 +18,7 @@ function App(props) {
             <Route path="/poke/:name" render={(props) => <View {...props} />} />
           </Switch>
         </div>
-      </SearchProvider>
+      </DataProvider>
     </div>
   );
 }
