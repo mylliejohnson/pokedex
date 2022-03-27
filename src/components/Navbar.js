@@ -2,9 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import DataContext from './DataContext';
 
-// NEED PROPS FROM POKEMON.JS -- pokemon
-// UNINSTALL @MUI
-
 function Navbar() {
 
     const { pokemon, filteredData, setFilteredData, wordEntered, setWordEntered } = useContext(DataContext)

@@ -3,14 +3,13 @@ import axios from 'axios';
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
 import DataContext from './DataContext'
-
-// // NEED PROPS FROM NAVBAR.JS -- filteredData
+import { Block } from '@mui/icons-material';
 
 function Pokemon() {
 
     // search context, states, and ref 
     const { pokemon, setPokemon, filteredData,
-        loading, setLoading, loadMore } = useContext(DataContext)
+        loading, setLoading, loadMore, open, setOpen } = useContext(DataContext)
 
     const [prevY, setPrevY] = useState(0)
     const [offset, setOffset] = useState(0)
@@ -50,7 +49,7 @@ function Pokemon() {
         }
     }
 
-    // window dimansions for loading more poke in list
+    // window dimensions for loading more poke in list
     const handleObserver = (entities, observer) => {
         const y = entities[0].boundingClientRect.y
 
@@ -65,7 +64,8 @@ function Pokemon() {
     /* --------------- MAIN RETURN --------------- */
 
     return (
-        <div className='Pokemon'>
+        <div className={open ? 'showDiv' : 'Pokemon'}>
+            <button className={!open ? 'close' : ''} onClick={() => setOpen(false)}>X</button>
             <div className='pokemon-list'>
                 {filteredData.length == 0 && (
                     pokemon.map((poke, i) => {
@@ -106,13 +106,3 @@ function Pokemon() {
 }
 
 export default Pokemon;
-
-// (pokemon.map((poke, i) => {
-//     return (
-//         <div className='poke' key={i}>
-//             <Link to={"/poke/" + poke.name}>
-//                 <h3>{poke.name}</h3>
-//             </Link>
-//         </div>
-//     )
-// }))

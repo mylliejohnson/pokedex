@@ -17,16 +17,6 @@ a {
   text-transform: uppercase;
 }
 
-button {
-  background: #eed430;
-  padding: 15px;
-  font-family: inherit;
-  text-align: center;
-  margin: 20px;
-  border: none;
-  border-radius: 3px;
-}
-
 /* navbar */
 
 .navbar {
@@ -141,7 +131,7 @@ form {
 
 .top {
   display: flex;
-  width: 100vh;
+  width: 100% auto;
   justify-content: space-evenly;
   align-items: center;
   min-height: 400px;
@@ -149,9 +139,9 @@ form {
 
 .poke-img{
   min-width: 300px;
-  max-height: 600px;
+  max-width: 450px;
+  max-height: 475px;
 }
-
 
 .bottom {
   display: flex;
@@ -161,7 +151,6 @@ form {
 .bottom div {
   margin: 10px;
   text-align: center;
-  gap: 50px;
 }
 
 .info {
@@ -172,52 +161,126 @@ li {
   list-style: none;
 }
 
+.attributes {
+  display: inline-flex;
+  gap: 25px;
+}
+
+.type {
+  padding: 5px;
+  display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid white;
+}
+
+.ability {
+  padding: 5px;
+  display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid white;
+}
+
 .loadPoke {
   margin: auto;
 }
-
-.Stats {
-  color: white;
-}
-
-/* .stats h3 {
-  position: relative;
-  left: 338px;
-  top: 40px;
-} */
 
 .stat-container{
   min-width: 300px;
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 30px;
+}
+
+.stats {
+  width: auto;
 }
 
 .stat {
   border-radius: 25px;
   padding: 10px;
-  background-color: #eed430;
+}
+
+.statLabel {
+  text-align: right;
+  margin-right: 10px;
+  width: 100px;
+}
+/* 
+.testmenu {
+  display: none;
+} */
+
+.stat-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.showDiv {
+  display:block;
+  position: fixed;
+  z-index: 10 !important;
+  background: #C6000C;
+}
+
+.close{
+  display: none;
+}
+
+.testmenu {
+  display: none;
 }
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .poke-img {
-    min-width: 200px;
+    min-width: 175px;
+    max-width: 200px;
   }
 
-  .container {
+  .container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 0px;
+    justify-content: center;
+  }
+
+  .top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat{
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  .statLabel {
+    font-size: 14px;
+    width: 70px;
+  }
+
+  .stat-container{
+    margin: 3px;
+  }
+
+  .types{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .abilities{
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }
 
+
+
 /* PHONE MEDIA QUERY */
 @media screen and (max-width: 767px) {
-  .Pokemon{
-    display: none !important;
-  }
+  .Pokemon { display: none}
 
   .View {
     width: 100%;
@@ -227,8 +290,9 @@ li {
   .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 0px;
+    width:100%;
+    height: 83vh;
+    border-radius: 0px;
   }
 
   .top {
@@ -238,28 +302,51 @@ li {
   }
 
   .poke-img {
-    min-width: 50px !important;
+    min-width: 20px !important;
+    max-height: 275px;
   }
 
-  .stats{
-    margin: 15px;
+  .attributes { 
+    gap: 0px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .stat {
+  .types{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .abilities{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .info{
+    font-size: 1.5em;
+  }
+
+  .stats{ width: 100% }
+
+  .stat-div { justify-content: center }
+
+  .statLabel {
+    font-size: 14px;
+    width: 70px;
+  }
+
+  .stat-container { margin: 3px }
+
+  .stat{
     padding: 5px;
+    font-size: 14px;
   }
 
-  .stat-container{
-    margin-bottom: 5px;
-    margin: 0px auto;
-    height: 10px;
+  .testmenu {
+    display: block;
   }
 
-  .stats h3 + .stat-container {
-    /* position: relative; */
-    /* top: 25px;
-    left: -70px; */
-   font-size: 16px;
-   display: inline-block;
+  .loadPoke{
+    margin: auto;
   }
 }

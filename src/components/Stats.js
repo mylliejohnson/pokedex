@@ -4,46 +4,57 @@ function Stats({ hp, attack, defense, spAttack, spDefense, speed }) {
 
     return (
         <div className='stats'>
-
-            <h3>HP</h3>
-            <div className='stat-container'>
-                <div className="stat" style={{ width: `${hp}%`, background: 'teal' }}>
-                    {hp}
+            <div className='stat-div'>
+                <h3 className='statLabel'>HP</h3>
+                <div className='stat-container'>
+                    <div className="stat" style={{ width: `${hp}%`, background: '#8BBAB7' }}>
+                        {hp}
+                    </div>
                 </div>
             </div>
 
-            <h3>ATTACK</h3>
-            <div className='stat-container'>
-                <div className="stat" style={{ width: `${attack}%`, background: '#915E82' }}>
-                    {attack}
+            <div className='stat-div'>
+                <h3 className='statLabel'>ATTACK</h3>
+                <div className='stat-container'>
+                    <div className="stat" style={{ width: `${attack}%`, background: '#915E82' }}>
+                        {attack}
+                    </div>
                 </div>
             </div>
 
-            <h3>DEFENSE</h3>
-            <div className='stat-container'>
-                <div className="stat" style={{ width: `${defense}%`, background: '#598C1F' }}>
-                    {defense}
+            <div className='stat-div'>
+                <h3 className='statLabel'>DEFENSE</h3>
+                <div className='stat-container'>
+                    <div className="stat" style={{ width: `${defense}%`, background: '#598C1F' }}>
+                        {defense}
+                    </div>
                 </div>
             </div>
 
-            <h3>SP ATTACK</h3>
-            <div className='stat-container'>
-                <div className="stat" style={{ width: `${spAttack}%`, background: '#EF8337' }}>
-                    {spAttack}
+            <div className='stat-div'>
+                <h3 className='statLabel'>SP ATTACK</h3>
+                <div className='stat-container'>
+                    <div className="stat" style={{ width: `${spAttack}%`, background: '#EF8337' }}>
+                        {spAttack}
+                    </div>
                 </div>
             </div>
 
-            <h3>SP DEFENSE</h3>
-            <div className='stat-container'>
-                <div className="stat" style={{ width: `${spDefense}%`, background: '#B90059' }}>
-                    {spDefense}
+            <div className='stat-div'>
+                <h3 className='statLabel'>SP DEFENSE</h3>
+                <div className='stat-container'>
+                    <div className="stat" style={{ width: `${spDefense}%`, background: '#B90059' }}>
+                        {spDefense}
+                    </div>
                 </div>
             </div>
 
-            <h3>SPEED</h3>
-            <div className='stat-container'>
-                <div className="stat" style={{ width: `${speed}%` }}>
-                    {speed}
+            <div className='stat-div'>
+                <h3 className='statLabel'>SPEED</h3>
+                <div className='stat-container'>
+                    <div className="stat" style={{ width: `${speed}%`, background: '#085064' }}>
+                        {speed}
+                    </div>
                 </div>
             </div>
         </div>

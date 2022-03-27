@@ -11,6 +11,8 @@ export const DataProvider = ({ children }) => {
     const [loadMore, setLoadMore] = useState(false)
     const [wordEntered, setWordEntered] = useState("")
 
+    const [open, setOpen] = useState(false)
+
     const colors = {
         fire: "#FF8811 ",
         grass: "#ABE188",
@@ -33,7 +35,7 @@ export const DataProvider = ({ children }) => {
             pokemon, setPokemon, filteredData, setFilteredData,
             wordEntered, setWordEntered,
             loading, setLoading, loadMore, setLoadMore, colors,
-
+            open, setOpen
         }}>
             {children}
         </DataContext.Provider>
