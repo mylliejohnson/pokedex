@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom'
 import DataContext from './DataContext';
 
 function Navbar() {
 
-    const { pokemon, filteredData, setFilteredData, wordEntered, setWordEntered } = useContext(DataContext)
+    const { pokemon, setFilteredData, wordEntered, setWordEntered } = useContext(DataContext)
 
     const handleFilter = (event) => {
         let val = event.target.value
@@ -14,11 +14,8 @@ function Navbar() {
             return value.name.toLowerCase().includes(val.toLowerCase())
         })
 
-        if (val === "") {
-            setFilteredData([]);
-        } else {
-            setFilteredData(newFilter);
-        }
+        val === "" ? setFilteredData([]) : setFilteredData(newFilter);
+
     }
 
     return (

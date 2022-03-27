@@ -1,5 +1,4 @@
-import { createContext, useState, useRef, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState } from "react";
 
 const DataContext = createContext({})
 
@@ -13,28 +12,12 @@ export const DataProvider = ({ children }) => {
 
     const [open, setOpen] = useState(false)
 
-    const colors = {
-        fire: "#FF8811 ",
-        grass: "#ABE188",
-        fairy: "#E5D4CE",
-        electric: "#fcde9c",
-        water: "#2AB7CA",
-        ground: "#C3A995",
-        rock: "#424B54",
-        poison: "#DD38B9",
-        bug: "#065143",
-        dragon: "#11270B",
-        psychic: "#54DE6D",
-        flying: "#F4D06F",
-        fighting: "#BCF4DE ",
-        normal: "#E3B505",
-    }
-
     return (
         <DataContext.Provider value={{
-            pokemon, setPokemon, filteredData, setFilteredData,
+            pokemon, setPokemon,
+            filteredData, setFilteredData,
             wordEntered, setWordEntered,
-            loading, setLoading, loadMore, setLoadMore, colors,
+            loading, setLoading, loadMore, setLoadMore,
             open, setOpen
         }}>
             {children}

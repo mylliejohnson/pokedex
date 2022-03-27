@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
-import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
-import DataContext from './DataContext'
-import { Block } from '@mui/icons-material';
+import DataContext from './DataContext';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Pokemon() {
 
@@ -62,10 +61,11 @@ function Pokemon() {
     }
 
     /* --------------- MAIN RETURN --------------- */
-
     return (
         <div className={open ? 'showDiv' : 'Pokemon'}>
-            <button className={!open ? 'close' : ''} onClick={() => setOpen(false)}>X</button>
+            <button className={!open ? 'close' : 'closeBtn'} onClick={() => setOpen(false)}>
+                <CloseIcon fontSize="large" />
+            </button>
             <div className='pokemon-list'>
                 {filteredData.length == 0 && (
                     pokemon.map((poke, i) => {

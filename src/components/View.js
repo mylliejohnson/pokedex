@@ -2,15 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import DataContext from './DataContext';
 import axios from 'axios';
 import Stats from './Stats';
-import { ColorLens } from '@mui/icons-material';
-import { color } from '@mui/system';
+import MenuIcon from '@mui/icons-material/Menu';
 
 // -------------------------------------------------- //
 
 function View(props) {
-
-    //const { colors } = useContext(DataContext)
-    //const main_types = Object.keys(colors)
 
     const { open, setOpen } = useContext(DataContext)
     const [singlePoke, setSinglePoke] = useState([])
@@ -19,8 +15,6 @@ function View(props) {
     const [stats, setStats] = useState([])
     const [types, setTypes] = useState([])
     const [abilities, setAbilities] = useState([])
-
-    // const [test, setTest] = useState(false)
 
     useEffect(() => {
         setLoading(true)
@@ -48,7 +42,12 @@ function View(props) {
         <div className='View'>
             <h1>{singlePoke.name}</h1>
             <div className='container'>
-                <button className='testmenu' onClick={() => setOpen(true)}>|||</button>
+                <button
+                    className='pokeMenuBtn'
+                    onClick={() => setOpen(true)}
+                    style={{ display: open ? 'none' : 'block' }}>
+                    <MenuIcon fontSize="large" />
+                </button>
 
                 <div className='attributes'>
                     <div className='types'>
