@@ -6,14 +6,13 @@ import Pokemon from './components/Pokemon';
 import { DataProvider } from './components/DataContext';
 
 function App(props) {
-
   return (
     <div className="App">
       <DataProvider>
         <Navbar />
 
         <div className='main'>
-          <Pokemon />
+          <Pokemon/>
           <Switch>
             <Route path="/poke/:name" render={(props) => <View {...props} />} />
           </Switch>

@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #f03a47;
+  background-color: #C6000C;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   width: 100%;
 }
@@ -152,26 +152,6 @@ form {
   max-height: 600px;
 }
 
-/* .stats{
-  background: #eee
-} */
-
-/* .stats{
-  background: #ddd;
-} */
-
-.stats div {
-  margin: 10px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-
-/* .stat-label{
-  min-width: 110px;
-  max-width: 120px;
-} */
 
 .bottom {
   display: flex;
@@ -196,8 +176,30 @@ li {
   margin: auto;
 }
 
-/* MEDIA QUERIES */
+.Stats {
+  color: white;
+}
 
+/* .stats h3 {
+  position: relative;
+  left: 338px;
+  top: 40px;
+} */
+
+.stat-container{
+  min-width: 300px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.stat {
+  border-radius: 25px;
+  padding: 10px;
+  background-color: #eed430;
+}
+
+/* MEDIA QUERIES */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .poke-img {
     min-width: 200px;
@@ -231,9 +233,33 @@ li {
 
   .top {
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .poke-img {
     min-width: 50px !important;
+  }
+
+  .stats{
+    margin: 15px;
+  }
+
+  .stat {
+    padding: 5px;
+  }
+
+  .stat-container{
+    margin-bottom: 5px;
+    margin: 0px auto;
+    height: 10px;
+  }
+
+  .stats h3 + .stat-container {
+    /* position: relative; */
+    /* top: 25px;
+    left: -70px; */
+   font-size: 16px;
+   display: inline-block;
   }
 }

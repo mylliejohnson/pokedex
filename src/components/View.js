@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import DataContext from './DataContext';
 import axios from 'axios';
+import Stats from './Stats';
 import { ColorLens } from '@mui/icons-material';
 import { color } from '@mui/system';
 
@@ -35,7 +36,7 @@ function View(props) {
     if (loading) return (<img src="https://i.imgur.com/aMz1Qtu.gif" className='loadPoke' height="100px" />)
 
     // POKE STATS
-    const sKeys = ["hp", "attack", "defense", "specAttack", "specDefense", "speed"]
+    const sKeys = ["hp", "attack", "defense", "spAttack", "spDefense", "speed"]
     const sValues = stats.map(base => base.base_stat)
     const statValue = sKeys.reduce((obj, key, index) => ({ ...obj, [key]: sValues[index] }), {})
 
@@ -47,57 +48,22 @@ function View(props) {
     return (
         <div className="View">
             <h1>{singlePoke.name}</h1>
+
             <div className='container'>
                 <div className='top'>
                     <div className='pokeSprite'>
                         <img src={spriteSrc} className="poke-img" alt={`${singlePoke.name}`} />
                     </div>
-                    <div className='stats' style={{ minWidth: '400px' }}>
-
-                        <h4 className='stat-label'>HP:</h4>
-                        <div className="stat" style={{ width: `${statValue.hp}%`, background: 'teal' }}>
-                            {statValue.hp}
-                        </div>
-
-                        <h4 className='stat-label'>Attack</h4>
-                        <div>
-
-                            <div style={{ width: `${statValue.attack}%`, background: 'orange' }}>
-                                {statValue.attack}
-                            </div>
-                        </div>
-
-                        <h4 className='stat-label'>Defense</h4>
-                        <div>
-
-                            <div style={{ width: `${statValue.defense}%`, background: 'green' }}>
-                                {statValue.defense}
-                            </div>
-                        </div>
-
-                        <h4 className='stat-label'>SP Attack</h4>
-                        <div>
-                            <div style={{ width: `${statValue.specAttack}%`, background: 'blue' }}>
-                                {statValue.specAttack}
-                            </div>
-                        </div>
-
-                        <h4 className='stat-label'>SP Defense</h4>
-                        <div>
-                            <div style={{ width: `${statValue.specDefense}%`, background: 'purple' }}>
-                                {statValue.specDefense}
-                            </div>
-                        </div>
-
-                        <h4 className='stat-label'>Speed</h4>
-                        <div>
-                            <div style={{ width: `${statValue.speed}%`, background: '#E9967A' }}>
-                                {statValue.speed}
-                            </div>
-                        </div>
-
-                    </div>
+                    <Stats
+                        hp={statValue.hp}
+                        attack={statValue.attack}
+                        defense={statValue.defense}
+                        spAttack={statValue.defense}
+                        spDefense={statValue.spDefense}
+                        speed={statValue.speed}
+                    />
                 </div>
+
                 <div className='bottom'>
                     <div>
                         <span>Height</span>
