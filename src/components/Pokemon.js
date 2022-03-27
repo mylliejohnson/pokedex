@@ -71,7 +71,7 @@ function Pokemon() {
                     pokemon.map((poke, i) => {
                         return (
                             <div className='poke' key={i}>
-                                <Link to={"/poke/" + poke.name}>
+                                <Link to={"/pokedex/" + poke.name}>
                                     <h3>{poke.name}</h3>
                                 </Link>
                             </div>

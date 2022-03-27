@@ -1,11 +1,16 @@
 import './App.css';
+import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import View from './components/View';
+import Home from './components/Home';
 import Pokemon from './components/Pokemon';
 import { DataProvider } from './components/DataContext';
 
 function App(props) {
+
+  let [page, setPage] = useState(true)
+
   return (
     <div className="App">
       <DataProvider>
@@ -13,7 +18,8 @@ function App(props) {
         <div className='main'>
           <Pokemon />
           <Switch>
-            <Route path="/poke/:name" render={(props) => <View {...props} />} />
+            <Route exact path="/" render={(props) => <Home {...props} />} />
+            <Route exact path="/pokedex/:name" render={(props) => <View {...props} />} />
           </Switch>
         </div>
       </DataProvider>
