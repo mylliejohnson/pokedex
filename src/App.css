@@ -220,8 +220,8 @@ li {
   box-shadow: 10px #000 ;
 }
 
-.close{
-  display: none;
+.close, .pokeMenuBtn{
+  display: none !important;
 }
 
 .closeBtn {
@@ -232,9 +232,7 @@ li {
   font-family: inherit;
 }
 
-.pokeMenuBtn {
-  display: none;
-}
+
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -345,7 +343,7 @@ li {
   }
 
   .pokeMenuBtn {
-    display: block;
+    display: block !important;
     z-index: 100;
     background: none;
     color: white;
