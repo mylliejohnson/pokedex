@@ -15,7 +15,6 @@ function Navbar() {
         })
 
         val === "" ? setFilteredData([]) : setFilteredData(newFilter);
-
     }
 
     return (
@@ -30,8 +29,7 @@ function Navbar() {
                         onChange={handleFilter} />
                 </form>
             </div>
-
-            <h1 className='pokemon-title'><Link to="/pokedex/">Pokémon</Link></h1>
+            <h1 className='pokemon-title'><Link to="/pokedex">Pokémon</Link></h1>
         </div>
     );
 }

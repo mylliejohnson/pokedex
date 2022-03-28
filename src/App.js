@@ -18,7 +18,7 @@ function App(props) {
         <div className='main'>
           <Pokemon />
           <Switch>
-            <Route exact path="/pokedex/" render={(props) => <Home {...props} />} />
+            <Route exact path="/pokedex" render={(props) => <Home {...props} />} />
             <Route exact path="/:name" render={(props) => <View {...props} />} />
           </Switch>
         </div>
