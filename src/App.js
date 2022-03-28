@@ -19,7 +19,7 @@ function App(props) {
           <Pokemon />
           <Switch>
             <Route exact path="/" render={(props) => <Home {...props} />} />
-            <Route exact path="/pokedex/:name" render={(props) => <View {...props} />} />
+            <Route exact path="/:name" render={(props) => <View {...props} />} />
           </Switch>
         </div>
       </DataProvider>
