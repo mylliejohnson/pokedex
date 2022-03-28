@@ -31,7 +31,7 @@ function Navbar() {
                 </form>
             </div>
 
-            <h1 className='pokemon-title'><Link to="/">Pokémon</Link></h1>
+            <h1 className='pokemon-title'><Link to="/pokedex/">Pokémon</Link></h1>
         </div>
     );
 }
