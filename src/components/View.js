@@ -29,6 +29,8 @@ function View(props) {
             })
     }, [props])
 
+    console.log(stats)
+
     if (loading) return (<img src="https://i.imgur.com/aMz1Qtu.gif" className='loadPoke' height="100px" />)
 
     let spriteSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${spriteId}.svg`
@@ -67,7 +69,7 @@ function View(props) {
                         hp={statValue.hp}
                         attack={statValue.attack}
                         defense={statValue.defense}
-                        spAttack={statValue.defense}
+                        spAttack={statValue.spAttack}
                         spDefense={statValue.spDefense}
                         speed={statValue.speed}
                     />
