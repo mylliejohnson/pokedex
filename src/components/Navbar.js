@@ -4,7 +4,7 @@ import DataContext from './DataContext';
 
 function Navbar() {
 
-    const { pokemon, setFilteredData, wordEntered, setWordEntered } = useContext(DataContext)
+    const { pokemon, setFilteredData, wordEntered, setWordEntered, open, setOpen } = useContext(DataContext)
 
     const handleFilter = (event) => {
         let val = event.target.value
@@ -26,7 +26,10 @@ function Navbar() {
                         id="search-box"
                         value={wordEntered}
                         placeholder="catch 'em all"
-                        onChange={handleFilter} />
+                        onChange={handleFilter}
+                        onClick={() => window.innerWidth > 767 ? null : setOpen(true)}
+
+                    />
                 </form>
             </div>
             <h1 className='pokemon-title'><Link to="/pokedex">Pokémon</Link></h1>

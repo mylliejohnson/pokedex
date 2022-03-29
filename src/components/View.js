@@ -29,8 +29,6 @@ function View(props) {
             })
     }, [props])
 
-    console.log(stats)
-
     if (loading) return (<img src="https://i.imgur.com/aMz1Qtu.gif" className='loadPoke' height="100px" />)
 
     let spriteSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${spriteId}.svg`
@@ -42,15 +40,15 @@ function View(props) {
 
     return (
         <div className='View'>
-            <h1>{singlePoke.name}</h1>
-            <div className='container'>
+            <h1>{singlePoke.name}
                 <button
                     className='pokeMenuBtn'
-                    onClick={() => setOpen(true)}
-                    style={{ display: open ? 'none' : 'block' }}>
+                    onClick={() => setOpen(true)}>
                     <MenuIcon fontSize="large" />
                 </button>
+            </h1>
 
+            <div className='container'>
                 <div className='attributes'>
                     <div className='types'>
                         <span>TYPES:</span>
@@ -74,7 +72,6 @@ function View(props) {
                         speed={statValue.speed}
                     />
                 </div>
-
                 <div className='bottom'>
                     <div>
                         <span>Height</span>

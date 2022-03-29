@@ -10,9 +10,11 @@ function Pokemon() {
     const { pokemon, setPokemon, filteredData,
         loading, setLoading, loadMore, open, setOpen } = useContext(DataContext)
 
+
     const [prevY, setPrevY] = useState(0)
     const [offset, setOffset] = useState(0)
     let pokemonRef = useRef([])
+    const menuRef = useRef()
     let loadingRef = useRef(null)
     let offsetRef = useRef({})
     let prevYRef = useRef({})
@@ -37,7 +39,22 @@ function Pokemon() {
         observer.observe(loadingRef.current)
     }, [])
 
-    // api call gets all pokemon
+    // closes pokemon list in mobile view
+    useEffect(() => {
+        const checkClickedOutside = e => {
+            if (open && menuRef.current && !menuRef.current.contains(e.target)) {
+                setOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", checkClickedOutside)
+
+        return () => {
+            document.removeEventListener("mousedown", checkClickedOutside)
+        }
+    }, [open])
+
+    // api call loads more pokemon
     const getPokemon = async () => {
         setLoading(true)
         let res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=${offsetRef.current}`)
@@ -62,7 +79,7 @@ function Pokemon() {
 
     /* --------------- MAIN RETURN --------------- */
     return (
-        <div className={open ? 'showDiv' : 'Pokemon'}>
+        <div className={open ? 'showDiv' : 'Pokemon'} ref={menuRef}>
             <button className={!open ? 'close' : 'closeBtn'} onClick={() => setOpen(false)}>
                 <CloseIcon fontSize="large" />
             </button>
